@@ -47,9 +47,9 @@ EOT;
         $this->line("\n".$asciiLogo."\n");
         $this->line("\n<options=bold>Congratulations, you've created your first Livewire component!</> 🎉🎉🎉\n");
         if ($this->confirm('Would you like to show some love by starring the repo?')) {
-            if(PHP_OS_FAMILY == 'Darwin') exec('open https://github.com/livewire/livewire');
-            if(PHP_OS_FAMILY == 'Windows') exec('start https://github.com/livewire/livewire');
-            if(PHP_OS_FAMILY == 'Linux') exec('xdg-open https://github.com/livewire/livewire');
+            if(PHP_OS_FAMILY == 'Darwin') exec('open https://github.com/wpstarter/livewire');
+            if(PHP_OS_FAMILY == 'Windows') exec('start https://github.com/wpstarter/livewire');
+            if(PHP_OS_FAMILY == 'Linux') exec('xdg-open https://github.com/wpstarter/livewire');
 
             $this->line("Thanks! Means the world to me!");
         }
