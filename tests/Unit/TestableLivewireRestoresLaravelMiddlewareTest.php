@@ -24,7 +24,7 @@ class TestableLivewireRestoresLaravelMiddlewareTest extends TestCase
         });
 
         $this->post('wpstarter', ['name' => '    aaa    '])
-        ->assertSee('laravelaaalaravel');
+        ->assertSee('wpstarteraaawpstarter');
     }
 }
 
