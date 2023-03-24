@@ -100,7 +100,7 @@ class Abort404IsThrownInComponentMountStub extends Component
 {
     public function mount()
     {
-        abort(404);
+        ws_abort(404);
     }
 
     public function render()
@@ -113,7 +113,7 @@ class Abort500IsThrownInComponentMountStub extends Component
 {
     public function mount()
     {
-        abort(500);
+        ws_abort(500);
     }
 
     public function render()
