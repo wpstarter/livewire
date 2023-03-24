@@ -67,7 +67,7 @@ class Component extends BaseComponent
                                         dusk='authors.{{ $authorKey }}.posts.{{ $postKey }}.comments.{{ $commentKey }}.author.name'
                                         wire:model="authors.{{ $authorKey }}.posts.{{ $postKey }}.comments.{{ $commentKey }}.author.name"
                                         />
-                                    <span dusk='output.authors.{{ $authorKey }}.posts.{{ $postKey }}.comments.{{ $commentKey }}.author.name'>{{ optional($comment->author)->name }}</span>
+                                    <span dusk='output.authors.{{ $authorKey }}.posts.{{ $postKey }}.comments.{{ $commentKey }}.author.name'>{{ ws_optional($comment->author)->name }}</span>
                                 </div>
                             @endforeach
                         </div>
