@@ -55,10 +55,12 @@ jobs:
         run: |
           vendor/bin/dusk-updater update 111 --no-interaction
 
-      - name: Debugging with ssh
-        uses: lhotari/action-upterm@v1
+
 
       - name: Run Browser tests
         run: vendor/bin/phpunit --testsuite Browser
         env:
           RUNNING_IN_CI: true
+
+      #- name: Debugging with ssh
+      #  uses: lhotari/action-upterm@v1
