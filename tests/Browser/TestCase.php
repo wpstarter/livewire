@@ -248,12 +248,14 @@ class TestCase extends BaseTestCase
     protected function driver(): RemoteWebDriver
     {
         $options = DuskOptions::getChromeOptions();
+        /*$options->addArguments(['--headless','no-sandbox','--window-size=1920,1080','--disable-gpu','--start-maximized']);
         $options->setExperimentalOption('prefs', [
             'download.default_directory' => __DIR__.DIRECTORY_SEPARATOR.'downloads',
             //'download.prompt_for_download'=>false,
             //"download.directory_upgrade"=> true,
             //"safebrowsing.enabled"=> false,
         ]);
+        */
 
 
         return static::$useSafari
