@@ -192,7 +192,7 @@ class TestCase extends BaseTestCase
         Artisan::call('view:clear');
 
         File::deleteDirectory($this->livewireViewsPath());
-        File::cleanDirectory(__DIR__.'/downloads');
+        File::cleanDirectory('/home/runner/Downloads');
         File::deleteDirectory($this->livewireClassesPath());
         File::delete(ws_app()->bootstrapPath('cache/livewire-components.php'));
 
@@ -226,7 +226,7 @@ class TestCase extends BaseTestCase
 
         $app['config']->set('filesystems.disks.dusk-downloads', [
             'driver' => 'local',
-            'root' => __DIR__.'/downloads',
+            'root' =>'/home/runner/Downloads',
         ]);
     }
 
