@@ -37,8 +37,8 @@
         }
     },
     "extra": {
-        "laravel": {
-            "wp-starter": [
+        "wpstarter": {
+            "providers": [
                 "Livewire\\LivewireServiceProvider"
             ],
             "aliases": {

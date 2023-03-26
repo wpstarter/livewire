@@ -55,8 +55,6 @@ jobs:
         run: |
           vendor/bin/dusk-updater update 111 --no-interaction
 
-
-
       - name: Run Browser tests
         run: vendor/bin/phpunit --testsuite Browser
         env:

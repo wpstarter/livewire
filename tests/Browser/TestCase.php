@@ -226,7 +226,7 @@ class TestCase extends BaseTestCase
 
         $app['config']->set('filesystems.disks.dusk-downloads', [
             'driver' => 'local',
-            'root' =>'/home/runner/Downloads',
+            'root' =>__DIR__.DIRECTORY_SEPARATOR.'downloads',
         ]);
     }
 
@@ -250,7 +250,7 @@ class TestCase extends BaseTestCase
         $options = DuskOptions::getChromeOptions();
         //$options->addArguments(['--headless','no-sandbox','--window-size=1920,1080','--disable-gpu','--start-maximized']);
         $options->setExperimentalOption('prefs', [
-            //'download.default_directory' => __DIR__.DIRECTORY_SEPARATOR.'downloads',
+            'download.default_directory' => __DIR__.DIRECTORY_SEPARATOR.'downloads',
             'download.prompt_for_download'=>false,
             //"download.directory_upgrade"=> true,
             //"safebrowsing.enabled"=> false,
