@@ -51,9 +51,9 @@ jobs:
         env:
           RUNNING_IN_CI: true
 
-      - name: Setup dusk/chrome
-        run: |
-          vendor/bin/dusk-updater update 111 --no-interaction
+      #- name: Setup dusk/chrome
+      #  run: |
+      #    vendor/bin/dusk-updater update 111 --no-interaction
 
 
 
