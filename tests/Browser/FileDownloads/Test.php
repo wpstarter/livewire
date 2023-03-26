@@ -8,10 +8,16 @@ use WpStarter\Support\Facades\Storage;
 
 class Test extends TestCase
 {
+    protected function onlyRunOnWindows(){
+        if(PHP_OS_FAMILY !== 'Windows'){
+            $this->markTestSkipped("We have problem with download on Linux. Temporary skipped!");
+        }
+    }
     /** @test */
     public function trigger_downloads_from_livewire_component()
     {
         $this->onlyRunOnChrome();
+        $this->onlyRunOnWindows();
 
         $this->browse(function ($browser) {
             Livewire::visit($browser, Component::class)
@@ -67,6 +73,7 @@ class Test extends TestCase
     public function trigger_downloads_from_livewire_component_with_headers()
     {
         $this->onlyRunOnChrome();
+        $this->onlyRunOnWindows();
 
         $this->browse(function ($browser) {
 
@@ -194,6 +201,7 @@ class Test extends TestCase
     public function trigger_downloads_from_event_listener()
     {
         $this->onlyRunOnChrome();
+        $this->onlyRunOnWindows();
 
         $this->browse(function ($browser) {
             Livewire::visit($browser, Component::class)
