@@ -59,6 +59,6 @@ jobs:
         env:
           RUNNING_IN_CI: true
 
-      #- name: Debugging with ssh
-      #  uses: lhotari/action-upterm@v1
-      #  if: failure()
+      - name: Debugging with ssh
+        uses: lhotari/action-upterm@v1
+        if: failure()
