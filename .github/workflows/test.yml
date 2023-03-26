@@ -9,7 +9,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu:ubuntu22/20230206.1
     strategy:
       fail-fast: true
       matrix:
@@ -51,9 +51,9 @@ jobs:
         env:
           RUNNING_IN_CI: true
 
-      #- name: Setup dusk/chrome
-      #  run: |
-      #    vendor/bin/dusk-updater update 111 --no-interaction
+      - name: Setup dusk/chrome
+        run: |
+          vendor/bin/dusk-updater update 109 --no-interaction
 
 
 
