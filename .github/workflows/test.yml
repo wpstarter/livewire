@@ -52,7 +52,9 @@ jobs:
           RUNNING_IN_CI: true
 
       - name: Setup chrome driver for dusk
-        run: ln -fs /usr/local/share/chrome_driver/chromedriver vendor/wpstarter/dusk/bin/chromedriver-linux
+        run: |
+          ln -fs /usr/local/share/chrome_driver/chromedriver vendor/wpstarter/dusk/bin/chromedriver-linux
+          vendor/wpstarter/dusk/bin/chromedriver-linux -v
 
       - name: Run Browser tests
         run: vendor/bin/phpunit --testsuite Browser
