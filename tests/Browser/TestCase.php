@@ -249,12 +249,13 @@ class TestCase extends BaseTestCase
     {
         $options = DuskOptions::getChromeOptions();
         //$options->addArguments(['--headless','no-sandbox','--window-size=1920,1080','--disable-gpu','--start-maximized']);
-        $options->setExperimentalOption('prefs', [
+        /*$options->setExperimentalOption('prefs', [
             'download.default_directory' => __DIR__.DIRECTORY_SEPARATOR.'downloads',
             //'download.prompt_for_download'=>false,
             //"download.directory_upgrade"=> true,
             //"safebrowsing.enabled"=> false,
         ]);
+        */
 
         return static::$useSafari
             ? RemoteWebDriver::create(
