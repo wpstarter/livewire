@@ -9,7 +9,9 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu:20230206.1
+    runs-on: ubuntu-latest
+    container:
+      image: ubuntu:ubuntu22/20230206.1
     strategy:
       fail-fast: true
       matrix:
