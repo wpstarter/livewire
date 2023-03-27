@@ -1,6 +1,7 @@
 {
     "name": "wpstarter/livewire",
-    "description": "A front-end framework for WpStarter.",
+    "description": "Livewire for WordPress. A front-end framework for WpStarter.",
+    "keywords": ["livewire", "wordpress","wp","wpstarter"],
     "license": "MIT",
     "authors": [
         {
