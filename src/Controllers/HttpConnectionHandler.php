@@ -41,6 +41,7 @@ class HttpConnectionHandler extends ConnectionHandler
                 $originalUrl,
                 Livewire::originalMethod()
             );
+
         } catch (NotFoundHttpException $e) {
 
             $originalUrl = Str::replaceFirst('/'.ws_request('fingerprint')['locale'], '', Livewire::originalUrl());
@@ -51,16 +52,27 @@ class HttpConnectionHandler extends ConnectionHandler
             if (Livewire::originalPath() == ws_request('fingerprint')['locale']) {
                 $originalUrl .= '/';
             }
-
-            $request = $this->makeRequestFromUrlAndMethod(
-                $originalUrl,
-                Livewire::originalMethod()
-            );
+            try {
+                $request = $this->makeRequestFromUrlAndMethod(
+                    $originalUrl,
+                    Livewire::originalMethod()
+                );
+            }catch (NotFoundHttpException $e){
+                $request = $this->makeRequestFromUrlAndMethod(
+                    $originalUrl,
+                    Livewire::originalMethod(),
+                    true
+                );
+            }
         }
 
         // Gather all the middleware for the original route, and filter it by
         // the ones we have designated for persistence on Livewire requests.
-        $originalRouteMiddleware = ws_app('router')->gatherRouteMiddleware($request->route());
+        if($route=$request->route()) {
+            $originalRouteMiddleware = ws_app('router')->gatherRouteMiddleware($route);
+        }else{
+            $originalRouteMiddleware = [];
+        }
 
         $persistentMiddleware = Livewire::getPersistentMiddleware();
 
@@ -80,7 +92,7 @@ class HttpConnectionHandler extends ConnectionHandler
             });
     }
 
-    protected function makeRequestFromUrlAndMethod($url, $method = 'GET')
+    protected function makeRequestFromUrlAndMethod($url, $method = 'GET', $noRoute=false)
     {
         // Ensure the original script paths are passed into the fake request incase Laravel is running in a subdirectory
         $request = Request::create($url, $method, [], [], [], [
@@ -94,11 +106,14 @@ class HttpConnectionHandler extends ConnectionHandler
         }
 
         $request->setUserResolver(ws_request()->getUserResolver());
+        if($noRoute){
+            $route=null;
+        }else {
+            $route = ws_app('router')->getRoutes()->match($request);
 
-        $route = ws_app('router')->getRoutes()->match($request);
-
-        // For some reason without this octane breaks the route parameter binding.
-        $route->setContainer(ws_app());
+            // For some reason without this octane breaks the route parameter binding.
+            $route->setContainer(ws_app());
+        }
 
         $request->setRouteResolver(function () use ($route) {
             return $route;
