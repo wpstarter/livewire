@@ -54,6 +54,7 @@ jobs:
       - name: Setup chrome driver for dusk
         run: |
           ln -fs /usr/local/share/chrome_driver/chromedriver vendor/wpstarter/dusk/bin/chromedriver-linux
+          sleep 1
           vendor/wpstarter/dusk/bin/chromedriver-linux -v
 
       - name: Run Browser tests
